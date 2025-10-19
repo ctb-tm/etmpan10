@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10ª Etapa ETMPAN 2024/25</title>
+    <style>
+        /* --- CONFIGURAÇÕES GLOBAIS E VARIÁVEIS --- */
+        
+        /* * IMPORTANTE: Altere a cor --primary-blue abaixo! 
+         * Use um "color picker" (seja no Photoshop ou online) para
+         * descobrir o código HEX exato da sua logomarca etmpan.png
+         * e substitua o valor #0D47A1.
+        */
+        :root {
+            --primary-blue: #0D47A1; /* <-- MUDE ESTA COR (Azul principal) */
+            --primary-red: #D32F2F;   /* (Vermelho para o rodapé) */
+            --light-gray-bg: #f4f7f9; /* (Cor de fundo da página) */
+            --text-color: #333;
+            --white-bg: #ffffff;
+        }
+
+        /* Reset básico e fontes "Clean" */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--light-gray-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* --- CONTAINER PRINCIPAL --- */
+        .infographic-container {
+            max-width: 950px;
+            margin: 30px auto;
+            background-color: var(--white-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden; /* Garante que o rodapé e cabeçalho respeitem o border-radius */
+        }
+
+        /* --- CABEÇALHO --- */
+        header.main-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr; /* Coluna esquerda, centro (maior), direita */
+            align-items: center;
+            padding: 25px 30px;
+            border-bottom: 4px solid var(--primary-blue);
+        }
+
+        .logo-header {
+            max-height: 60px; /* Tamanho médio */
+            width: auto;
+            justify-self: start; /* Alinha à esquerda da sua coluna */
+        }
+
+        .title-header {
+            font-size: 2.2rem; /* Tamanho do título */
+            font-weight: 700;
+            color: var(--primary-blue); /* Cor 100% azul */
+            text-align: center;
+            grid-column: 2 / 3; /* Ocupa a coluna central */
+        }
+
+        /* --- CONTEÚDO PRINCIPAL --- */
+        main.content-area {
+            padding: 30px;
+        }
+
+        h2, h3 {
+            color: var(--primary-blue);
+            font-weight: 600;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        h2 { font-size: 1.8rem; }
+        h3 { font-size: 1.5rem; }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* --- O ESTILO "BOX BRANCO COM LATERAL AZUL" --- */
+        .info-box {
+            background: var(--white-bg);
+            border-left: 8px solid var(--primary-blue); /* A "Lateral Azul" */
+            margin-bottom: 30px;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.07);
+        }
+
+        /* --- SEÇÃO: CAMPEÕES (IMAGENS 1x1) --- */
+        .champions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+            gap: 20px;
+            text-align: center;
+        }
+
+        .champion-item img {
+            width: 100%;
+            aspect-ratio: 1 / 1; /* Formato 1x1 */
+            object-fit: cover; /* Garante que a imagem preenche o espaço sem distorcer */
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 10px;
+        }
+
+        .champion-item p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-blue);
+        }
+
+        /* --- SEÇÃO: TABELAS DE RESULTADOS --- */
+        .results-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .results-table th,
+        .results-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .results-table th {
+            background-color: var(--primary-blue);
+            color: var(--white-bg);
+            font-weight: 600;
+        }
+
+        /* Destaque "minucioso" para a posição (medalha) */
+        .results-table td:first-child {
+            font-size: 1.5rem;
+            text-align: center;
+            width: 60px;
+        }
+
+        .results-table tr:nth-child(even) {
+            background-color: #f9f9f9; /* Linhas alternadas */
+        }
+
+        /* --- SEÇÃO: VÍDEOS (9:16) --- */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+            gap: 20px;
+        }
+
+        .videos-grid video {
+            width: 100%;
+            aspect-ratio: 9 / 16; /* Formato 9:16 */
+            border-radius: 8px;
+            background-color: #000; /* Fundo preto para o player */
+        }
+        
+        /* --- BLOCO FINAL (Sobre) --- */
+        .info-box blockquote {
+            border-left: 4px solid #ccc;
+            padding-left: 15px;
+            margin-left: 5px;
+            font-style: italic;
+            color: #555;
+        }
+
+        .info-box .event-details p {
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        /* --- RODAPÉ --- */
+        footer.main-footer {
+            background-color: var(--primary-red); /* Cor vermelha */
+            padding: 20px 30px;
+            display: flex;
+            justify-content: flex-end; /* Alinha item à direita */
+            align-items: center;
+        }
+
+        .logo-footer {
+            max-height: 50px;
+            width: auto;
+        }
+
+        /* --- Ajustes para telemóveis (Responsivo) --- */
+        @media (max-width: 768px) {
+            .infographic-container {
+                margin: 10px;
+                width: auto;
+            }
+
+            header.main-header {
+                grid-template-columns: 1fr; /* Empilha o logo e o título */
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .logo-header {
+                justify-self: center; /* Centra o logo */
+            }
+
+            .title-header {
+                grid-column: 1 / -1; /* Ocupa tudo */
+                font-size: 1.8rem;
+            }
+
+            main.content-area {
+                padding: 20px;
+            }
+
+            .info-box {
+                padding: 20px;
+            }
+
+            /* Empilha os campeões e vídeos */
+            .champions-grid,
+            .videos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .videos-grid video {
+                aspect-ratio: 16 / 9; /* Muda para paisagem no telemóvel, mais comum */
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="infographic-container">
+        
+        <header class="main-header">
+            <img src="etmpan.png" alt="Logo ETMPAN" class="logo-header">
+            <h1 class="title-header">10ª Etapa ETMPAN 2024/25</h1>
+        </header>
+
+        <main class="content-area">
+
+            <div class="info-box">
+                <h2>🏆 Campeões da Etapa</h2>
+                <div class="champions-grid">
+                    <div class="champion-item">
+                        <img src="1.png" alt="Campeão Primeira Divisão">
+                        <p>Thiago Silva<br><small>(Campeão 1ª Divisão)</small></p>
+                    </div>
+                    <div class="champion-item">
+                        <img src="2.png" alt="Campeão Segunda Divisão">
+                        <p>Thiago Silva<br><small>(Campeão 2ª Divisão)</small></p>
+                    </div>
+                    <div class="champion-item">
+                        <img src="3.png" alt="Campeão Terceira Divisão">
+                        <p>Matheus Santana<br><small>(Campeão 3ª Divisão)</small></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h2>🏓 Thiago Silva e Inigmar Veras brilham na 10ª Etapa da ETMPAN na AABB Salvador</h2>
+                
+                <p>A 10ª Etapa da ETMPAN (Escolinha de Tênis de Mesa Professor Ângelo Neto) foi um verdadeiro espetáculo de técnica, superação e espírito esportivo. Realizada na AABB Salvador, a competição reuniu dezenas de atletas em mais um capítulo de sucesso do projeto que vem formando talentos e fortalecendo o tênis de mesa baiano.</p>
+                <p>Organizado por Paulo Carneiro, presidente do Clube dos Tenistas da Bahia (CTB), o torneio contou com o apoio da comunidade esportiva local e o empenho da equipe do professor Ângelo Neto, referência no ensino e desenvolvimento do tênis de mesa na Bahia.</p>
+                
+                <h3>🎯 Thiago Silva domina e conquista duas divisões</h3>
+                <p>O grande destaque da etapa foi Thiago Silva, que mostrou consistência, preparo físico e um controle técnico admirável. Em uma jornada impressionante, Thiago sagrou-se campeão da Primeira e da Segunda Divisão, consolidando-se como um dos nomes mais fortes da atual geração de mesatenistas da ETMPAN.</p>
+                <p>Suas atuações chamaram atenção pela segurança nos rallies, precisão nos ataques e tranquilidade nos momentos decisivos. Thiago demonstrou maturidade tática e resistência mental, características de um atleta em plena ascensão.</p>
+                <blockquote>“Estou muito feliz com o resultado. Venho treinando com intensidade e buscando evoluir a cada etapa. Ganhar duas divisões é fruto do trabalho que realizamos junto à equipe e aos professores”, declarou Thiago após as conquistas.</blockquote>
+                <p>A dupla vitória reafirma o excelente momento do atleta, que se destaca não apenas pelos títulos, mas pela postura exemplar dentro e fora da mesa — inspirando novos praticantes e reforçando o potencial formador do projeto coordenado por Ângelo Neto.</p>
+                
+                <h3>🥈 Inigmar Veras confirma regularidade e alto nível técnico</h3>
+                <p>Outro grande nome da competição foi Inigmar Veras, vice-campeão tanto na Primeira quanto na Segunda Divisão.</p>
+                <p>Com um jogo equilibrado e refinado, Inigmar mostrou técnica apurada, excelente leitura tática e uma regularidade que o coloca entre os atletas mais promissores da temporada.</p>
+                <p>Sua trajetória nesta etapa foi marcada por vitórias convincentes e disputas acirradas contra adversários de alto nível, culminando em duas finais emocionantes contra Thiago Silva.</p>
+                <blockquote>“Fico muito satisfeito com o desempenho. Foram partidas intensas, e disputar duas finais mostra que o trabalho está no caminho certo. Thiago está em grande fase, e competir nesse nível só nos faz crescer”, comentou Inigmar.</blockquote>
+                <p>A rivalidade saudável entre Thiago e Inigmar vem se tornando um dos grandes atrativos da ETMPAN — representando a nova geração de mesatenistas baianos que alia talento, disciplina e espírito esportivo.</p>
+            </div>
+
+            <div class="info-box">
+                <h2>🏓 Resultados Oficiais da 10ª Etapa ETMPAN</h2>
+
+                <h3>Primeira Divisão</h3>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Pos.</th>
+                            <th>Título</th>
+                            <th>Atleta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🥇</td>
+                            <td>Campeão</td>
+                            <td>Thiago Silva</td>
+                        </tr>
+                        <tr>
+                            <td>🥈</td>
+                            <td>Vice-campeão</td>
+                            <td>Inigmar Veras</td>
+                        </tr>
+                        <tr>
+                            <td>🥉</td>
+                            <td>Terceiro</td>
+                            <td>William Belo</td>
+                        </tr>
+                        <tr>
+                            <td>🥉</td>
+                            <td>Terceiro</td>
+                            <td>Anderson Nascimento</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Segunda Divisão</h3>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Pos.</th>
+                            <th>Título</th>
+                            <th>Atleta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🥇</td>
+                            <td>Campeão</td>
+                            <td>Thiago Silva</td>
+                        </tr>
+                        <tr>
+                            <td>🥈</td>
+                            <td>Vice-campeão</td>
+                            <td>Inigmar Veras</td>
+                        </tr>
+                        <tr>
+                            <td>🥉</td>
+                            <td>Terceiro</td>
+                            <td>Maurício Sampaio</td>
+                        </tr>
+                        <tr>
+                            <td>🥉</td>
+                            <td>Terceiro</td>
+                            <td>João Neto</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Terceira Divisão</h3>
+                <table class="results-table">
+                    <thead>
+                        <tr>
+                            <th>Pos.</th>
+                            <th>Título</th>
+                            <th>Atleta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>🥇</td>
+                            <td>Campeão</td>
+                            <td>Matheus Santana</td>
+                        </tr>
+                        <tr>
+                            <td>🥈</td>
+                            <td>Vice-campeão</td>
+                            <td>Leonardo Loreiro</td>
+                        </tr>
+                        <tr>
+                            <td>🥉</td>
+                            <td>Terceiro</td>
+                            <td>Patrick Pimenta</td>
+                        </tr>
+                        <tr>
+                            <td>🥉</td>
+                            <td>Terceiro</td>
+                            <td>Maurício Sampaio</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="info-box">
+                <h2>🎥 Destaques da Etapa</h2>
+                <div class="videos-grid">
+                    <video src="1.mp4" controls poster=""></video>
+                    <video src="2.mp4" controls poster=""></video>
+                    <video src="3.mp4" controls poster=""></video>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>💬 Organização e legado esportivo</h3>
+                <p>O presidente do CTB, Paulo Carneiro, destacou o sucesso da etapa e o crescimento técnico dos atletas:</p>
+                <blockquote>“A ETMPAN é um celeiro de talentos. Ver atletas como Thiago e Inigmar brilhando em duas divisões mostra que o trabalho da base está dando resultados concretos. Eles representam o futuro do tênis de mesa baiano, e é gratificante acompanhar essa evolução.”</blockquote>
+                
+                <p>O professor Ângelo Neto, criador da escolinha e mentor técnico de diversos atletas, reforçou o propósito do projeto:</p>
+                <blockquote>“Mais do que formar campeões, queremos formar pessoas através do esporte. O tênis de mesa ensina disciplina, foco e respeito. Esses resultados são reflexo de dedicação e amor pelo que fazemos.”</blockquote>
+                
+                <hr style="border:0; border-top: 1px solid #eee; margin: 25px 0;">
+
+                <h3>🌟 Sobre a ETMPAN e o CTB</h3>
+                <p>A ETMPAN (Escolinha de Tênis de Mesa Professor Ângelo Neto) é um projeto esportivo sediado na AABB Salvador, voltado à iniciação e ao aperfeiçoamento técnico de atletas de todas as idades.</p>
+                <p>Sob a liderança do professor Ângelo Neto e com a parceria do Clube dos Tenistas da Bahia (CTB), presidido por Paulo Carneiro, a iniciativa tem promovido a inclusão esportiva e revelado novos talentos que vêm se destacando em competições regionais e estaduais.</p>
+                
+                <div class="event-details" style="margin-top: 20px;">
+                    <p><strong>📍 Local:</strong> AABB Salvador</p>
+                    <p><strong>📅 Evento:</strong> 10ª Etapa ETMPAN</p>
+                    <p><strong>👤 Organização:</strong> Paulo Carneiro – CTB</p>
+                    <p><strong>🎓 Coordenação técnica:</strong> Professor Ângelo Neto</p>
+                </div>
+            </div>
+
+        </main>
+
+        <footer class="main-footer">
+            <img src="etmpanvm.png" alt="Logo ETMPAN Vermelha" class="logo-footer">
+        </footer>
+
+    </div>
+
+</body>
+</html>
