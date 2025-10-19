@@ -230,8 +230,82 @@
             }
 
             .videos-grid video {
-                aspect-ratio: 16 / 9; /* Muda para paisagem no telemóvel, mais comum */
+                /* No telemóvel, é melhor manter o 9:16 se os vídeos são verticais */
+                 aspect-ratio: 9 / 16;
             }
+        }
+        
+        
+        /* ================================================= */
+        /* --- 2. NOVOS ESTILOS: LIGHTBOX / MODAL --- */
+        /* ================================================= */
+
+        /* Adiciona o cursor de "mãozinha" aos itens clicáveis */
+        .champions-grid img,
+        .videos-grid video {
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Efeito de zoom suave ao passar o rato */
+        .champions-grid img:hover,
+        .videos-grid video:hover {
+            transform: scale(1.03);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* O container do Modal (fica escondido por padrão) */
+        .lightbox-modal {
+            display: none; /* Começa oculto */
+            position: fixed; /* Fica por cima de tudo */
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85); /* Fundo preto semi-transparente */
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Classe que o JavaScript adiciona para mostrar o modal */
+        .lightbox-modal.active {
+            display: flex;
+        }
+
+        /* Onde a imagem/vídeo maximizado vai aparecer */
+        .lightbox-content {
+            position: relative;
+            max-width: 90%; /* Máximo de 90% da largura da tela */
+            max-height: 90vh; /* Máximo de 90% da altura da tela */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Estilo da imagem/vídeo dentro do modal */
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: 90vh; /* Garante que não ultrapasse a tela */
+            border-radius: 8px;
+            /* O "formato igual" é garantido pelo max-width/max-height */
+        }
+
+        /* O botão de fechar (X) */
+        .lightbox-close {
+            position: absolute;
+            top: 15px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .lightbox-close:hover {
+            color: #bbb;
         }
 
     </style>
@@ -251,15 +325,15 @@
                 <h2>🏆 Campeões da Etapa</h2>
                 <div class="champions-grid">
                     <div class="champion-item">
-                        <img src="1.png" alt="Campeão Primeira Divisão">
+                        <img src="1.png" alt="Thiago Silva - Campeão 1ª Divisão">
                         <p>Thiago Silva<br><small>(Campeão 1ª Divisão)</small></p>
                     </div>
                     <div class="champion-item">
-                        <img src="2.png" alt="Campeão Segunda Divisão">
+                        <img src="2.png" alt="Thiago Silva - Campeão 2ª Divisão">
                         <p>Thiago Silva<br><small>(Campeão 2ª Divisão)</small></p>
                     </div>
                     <div class="champion-item">
-                        <img src="3.png" alt="Campeão Terceira Divisão">
+                        <img src="3.png" alt="Matheus Santana - Campeão 3ª Divisão">
                         <p>Matheus Santana<br><small>(Campeão 3ª Divisão)</small></p>
                     </div>
                 </div>
@@ -391,9 +465,9 @@
             <div class="info-box">
                 <h2>🎥 Destaques da Etapa</h2>
                 <div class="videos-grid">
-                    <video src="1.mp4" controls poster=""></video>
-                    <video src="2.mp4" controls poster=""></video>
-                    <video src="3.mp4" controls poster=""></video>
+                    <video src="1.mp4" poster=""></video>
+                    <video src="2.mp4" poster=""></video>
+                    <video src="3.mp4" poster=""></video>
                 </div>
             </div>
 
@@ -425,7 +499,89 @@
             <img src="etmpanvm.png" alt="Logo ETMPAN Vermelha" class="logo-footer">
         </footer>
 
+    </div> <div id="lightbox" class="lightbox-modal">
+        <span class="lightbox-close">&times;</span>
+        <div class="lightbox-content">
+            </div>
     </div>
+
+
+    <script>
+        // Espera o documento HTML estar totalmente carregado
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Selecionar os elementos principais do modal
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = lightbox.querySelector('.lightbox-content');
+            const closeButton = lightbox.querySelector('.lightbox-close');
+
+            // 2. Selecionar TODAS as imagens e vídeos que devem abrir o modal
+            const clickableImages = document.querySelectorAll('.champions-grid img');
+            const clickableVideos = document.querySelectorAll('.videos-grid video');
+
+            // 3. Adicionar o "ouvidor de clique" para as IMAGENS
+            clickableImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    // Limpa o conteúdo anterior
+                    lightboxContent.innerHTML = ''; 
+                    
+                    // Cria um novo elemento de imagem
+                    const newImg = document.createElement('img');
+                    newImg.src = this.src; // Copia o 'src' (link) da imagem clicada
+                    newImg.alt = this.alt;
+                    
+                    // Adiciona a nova imagem ao modal
+                    lightboxContent.appendChild(newImg);
+                    
+                    // Mostra o modal
+                    lightbox.classList.add('active');
+                });
+            });
+
+            // 4. Adicionar o "ouvidor de clique" para os VÍDEOS
+            clickableVideos.forEach(video => {
+                video.addEventListener('click', function() {
+                    video.pause(); // Pausa o vídeo pequeno na página
+
+                    // Limpa o conteúdo anterior
+                    lightboxContent.innerHTML = ''; 
+                    
+                    // Cria um novo elemento de vídeo
+                    const newVideo = document.createElement('video');
+                    newVideo.src = this.src; // Copia o 'src' (link) do vídeo clicado
+                    newVideo.controls = true; // Adiciona controles (play, volume)
+                    newVideo.autoplay = true; // Faz o vídeo tocar automaticamente
+                    newVideo.loop = true;     // Opcional: faz o vídeo repetir
+                    
+                    // Adiciona o novo vídeo ao modal
+                    lightboxContent.appendChild(newVideo);
+                    
+                    // Mostra o modal
+                    lightbox.classList.add('active');
+                });
+            });
+
+            // 5. Função para FECHAR o modal
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                // Limpa o conteúdo de dentro do modal
+                // Isso é IMPORTANTE para parar o vídeo que estava a tocar
+                lightboxContent.innerHTML = ''; 
+            }
+
+            // 6. Adicionar eventos de fecho
+            // Clicar no botão 'X'
+            closeButton.addEventListener('click', closeLightbox);
+            
+            // Clicar no fundo escuro (fora da imagem/vídeo)
+            lightbox.addEventListener('click', function(e) {
+                // Verifica se o clique foi no próprio fundo (e não no conteúdo)
+                if (e.target === lightbox) { 
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
