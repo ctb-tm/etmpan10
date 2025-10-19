@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resultados - 10ª Etapa ETMPAN 2024/25</title>
+    <title>10ª Etapa ETMPAN 2024/25</title>
     <style>
         /* --- CONFIGURAÇÕES GLOBAIS E VARIÁVEIS --- */
         
@@ -54,7 +54,7 @@
         }
 
         .logo-header {
-            max-height: 90px; /* Tamanho médio */
+            max-height: 60px; /* Tamanho médio */
             width: auto;
             justify-self: start; /* Alinha à esquerda da sua coluna */
         }
@@ -65,6 +65,17 @@
             color: var(--primary-blue); /* Cor 100% azul */
             text-align: center;
             grid-column: 2 / 3; /* Ocupa a coluna central */
+        }
+        
+        /* --- NOVO: Instrução de expandir --- */
+        .expand-instruction {
+            padding: 0 30px;
+            margin-top: 10px; /* Espaço abaixo do cabeçalho */
+            margin-bottom: -10px; /* Puxa o conteúdo principal para cima */
+            text-align: right;
+            font-size: 0.9rem;
+            font-style: italic;
+            color: var(--primary-blue);
         }
 
         /* --- CONTEÚDO PRINCIPAL --- */
@@ -179,14 +190,39 @@
             margin-bottom: 5px;
         }
 
-        /* --- RODAPÉ --- */
+        /* --- RODAPÉ (ATUALIZADO) --- */
         footer.main-footer {
             background-color: var(--primary-red); /* Cor vermelha */
             padding: 20px 30px;
             display: flex;
-            justify-content: flex-end; /* Alinha item à direita */
+            justify-content: space-between; /* Alterado para alinhar itens */
             align-items: center;
         }
+        
+        /* NOVO: Estilo do contato no rodapé */
+        .footer-contact {
+            display: flex;
+            align-items: center;
+            gap: 15px; /* Espaço entre texto e ícone */
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .footer-contact a {
+            display: inline-flex; /* Alinha o SVG corretamente */
+            align-items: center;
+        }
+        
+        .footer-contact svg {
+            fill: #fff;
+            transition: transform 0.2s ease;
+        }
+        
+        .footer-contact a:hover svg {
+            transform: scale(1.15); /* Efeito de hover */
+        }
+
 
         .logo-footer {
             max-height: 50px;
@@ -214,6 +250,13 @@
                 grid-column: 1 / -1; /* Ocupa tudo */
                 font-size: 1.8rem;
             }
+            
+            /* NOVO: Ajuste instrução */
+            .expand-instruction {
+                text-align: center;
+                padding: 0 20px;
+                margin-bottom: 0;
+            }
 
             main.content-area {
                 padding: 20px;
@@ -230,14 +273,30 @@
             }
 
             .videos-grid video {
-                /* No telemóvel, é melhor manter o 9:16 se os vídeos são verticais */
                  aspect-ratio: 9 / 16;
+            }
+            
+            /* NOVO: Ajuste rodapé */
+            footer.main-footer {
+                flex-direction: column; /* Empilha o contato e a logo */
+                gap: 20px;
+                padding: 20px;
+            }
+            .footer-contact {
+                font-size: 0.9rem;
+                order: 2; /* Coloca o contato abaixo da logo */
+                text-align: center;
+                flex-direction: column; /* Empilha o texto e o ícone */
+                gap: 10px;
+            }
+            .logo-footer {
+                order: 1; /* Coloca a logo acima */
             }
         }
         
         
         /* ================================================= */
-        /* --- 2. NOVOS ESTILOS: LIGHTBOX / MODAL --- */
+        /* --- ESTILOS: LIGHTBOX / MODAL --- */
         /* ================================================= */
 
         /* Adiciona o cursor de "mãozinha" aos itens clicáveis */
@@ -289,7 +348,6 @@
             max-width: 100%;
             max-height: 90vh; /* Garante que não ultrapasse a tela */
             border-radius: 8px;
-            /* O "formato igual" é garantido pelo max-width/max-height */
         }
 
         /* O botão de fechar (X) */
@@ -318,6 +376,10 @@
             <img src="etmpan.png" alt="Logo ETMPAN" class="logo-header">
             <h1 class="title-header">10ª Etapa ETMPAN 2024/25</h1>
         </header>
+
+        <div class="expand-instruction">
+            <p>Clicar nas imagens e vídeos para expandir ↗</p>
+        </div>
 
         <main class="content-area">
 
@@ -496,6 +558,17 @@
         </main>
 
         <footer class="main-footer">
+            
+            <div class="footer-contact">
+                <p>Angelo Pio Neto - 71-99935-3004</p>
+                <a href="https://www.instagram.com/angelonetopio" target="_blank" rel="noopener noreferrer" title="Instagram Angelo Neto Pio">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF">
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/>
+                    </svg>
+                </a>
+            </div>
+
             <img src="etmpanvm.png" alt="Logo ETMPAN Vermelha" class="logo-footer">
         </footer>
 
@@ -507,75 +580,47 @@
 
 
     <script>
-        // Espera o documento HTML estar totalmente carregado
         document.addEventListener('DOMContentLoaded', function() {
             
-            // 1. Selecionar os elementos principais do modal
             const lightbox = document.getElementById('lightbox');
             const lightboxContent = lightbox.querySelector('.lightbox-content');
             const closeButton = lightbox.querySelector('.lightbox-close');
-
-            // 2. Selecionar TODAS as imagens e vídeos que devem abrir o modal
             const clickableImages = document.querySelectorAll('.champions-grid img');
             const clickableVideos = document.querySelectorAll('.videos-grid video');
 
-            // 3. Adicionar o "ouvidor de clique" para as IMAGENS
             clickableImages.forEach(img => {
                 img.addEventListener('click', function() {
-                    // Limpa o conteúdo anterior
                     lightboxContent.innerHTML = ''; 
-                    
-                    // Cria um novo elemento de imagem
                     const newImg = document.createElement('img');
-                    newImg.src = this.src; // Copia o 'src' (link) da imagem clicada
+                    newImg.src = this.src;
                     newImg.alt = this.alt;
-                    
-                    // Adiciona a nova imagem ao modal
                     lightboxContent.appendChild(newImg);
-                    
-                    // Mostra o modal
                     lightbox.classList.add('active');
                 });
             });
 
-            // 4. Adicionar o "ouvidor de clique" para os VÍDEOS
             clickableVideos.forEach(video => {
                 video.addEventListener('click', function() {
-                    video.pause(); // Pausa o vídeo pequeno na página
-
-                    // Limpa o conteúdo anterior
+                    video.pause(); 
                     lightboxContent.innerHTML = ''; 
-                    
-                    // Cria um novo elemento de vídeo
                     const newVideo = document.createElement('video');
-                    newVideo.src = this.src; // Copia o 'src' (link) do vídeo clicado
-                    newVideo.controls = true; // Adiciona controles (play, volume)
-                    newVideo.autoplay = true; // Faz o vídeo tocar automaticamente
-                    newVideo.loop = true;     // Opcional: faz o vídeo repetir
-                    
-                    // Adiciona o novo vídeo ao modal
+                    newVideo.src = this.src;
+                    newVideo.controls = true;
+                    newVideo.autoplay = true;
+                    newVideo.loop = true;
                     lightboxContent.appendChild(newVideo);
-                    
-                    // Mostra o modal
                     lightbox.classList.add('active');
                 });
             });
 
-            // 5. Função para FECHAR o modal
             function closeLightbox() {
                 lightbox.classList.remove('active');
-                // Limpa o conteúdo de dentro do modal
-                // Isso é IMPORTANTE para parar o vídeo que estava a tocar
                 lightboxContent.innerHTML = ''; 
             }
 
-            // 6. Adicionar eventos de fecho
-            // Clicar no botão 'X'
             closeButton.addEventListener('click', closeLightbox);
             
-            // Clicar no fundo escuro (fora da imagem/vídeo)
             lightbox.addEventListener('click', function(e) {
-                // Verifica se o clique foi no próprio fundo (e não no conteúdo)
                 if (e.target === lightbox) { 
                     closeLightbox();
                 }
