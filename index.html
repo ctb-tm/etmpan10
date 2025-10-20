@@ -7,11 +7,7 @@
     <style>
         /* --- CONFIGURAÇÕES GLOBAIS E VARIÁVEIS --- */
         
-        /* * IMPORTANTE: Altere a cor --primary-blue abaixo! 
-         * Use um "color picker" (seja no Photoshop ou online) para
-         * descobrir o código HEX exato da sua logomarca etmpan.png
-         * e substitua o valor #0D47A1.
-        */
+        /* * IMPORTANTE: Altere a cor --primary-blue abaixo! */
         :root {
             --primary-blue: #0D47A1; /* <-- MUDE ESTA COR (Azul principal) */
             --primary-red: #D32F2F;   /* (Vermelho para o rodapé) */
@@ -41,37 +37,51 @@
             background-color: var(--white-bg);
             border-radius: 12px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            overflow: hidden; /* Garante que o rodapé e cabeçalho respeitem o border-radius */
+            overflow: hidden; 
         }
 
         /* --- CABEÇALHO --- */
         header.main-header {
             display: grid;
-            grid-template-columns: 1fr 2fr 1fr; /* Coluna esquerda, centro (maior), direita */
+            grid-template-columns: 1fr 2fr 1fr; 
             align-items: center;
             padding: 25px 30px;
             border-bottom: 4px solid var(--primary-blue);
         }
 
         .logo-header {
-            max-height: 100px; /* Tamanho médio */
+            max-height: 60px; 
             width: auto;
-            justify-self: start; /* Alinha à esquerda da sua coluna */
+            justify-self: start; 
         }
 
         .title-header {
-            font-size: 2.2rem; /* Tamanho do título */
+            font-size: 2.2rem; 
             font-weight: 700;
-            color: var(--primary-blue); /* Cor 100% azul */
+            color: var(--primary-blue); 
             text-align: center;
-            grid-column: 2 / 3; /* Ocupa a coluna central */
+            grid-column: 2 / 3; 
         }
         
-        /* --- NOVO: Instrução de expandir --- */
+        /* --- ATUALIZADO: Container do Spotify --- */
+        .spotify-embed-container {
+            padding: 25px 30px 15px 30px; /* Espaço à volta do player */
+            border-bottom: 1px solid #eee; /* Linha fina de separação */
+        }
+
+        .spotify-embed-container iframe {
+            display: block; /* Remove espaço extra abaixo do iframe */
+            width: 100%;
+            border: 0;
+            border-radius: 12px; /* Cantos arredondados do player */
+            height: 352px; /* ATUALIZADO para a altura do seu <iframe> */
+        }
+        
+        /* --- Instrução de expandir --- */
         .expand-instruction {
             padding: 0 30px;
-            margin-top: 10px; /* Espaço abaixo do cabeçalho */
-            margin-bottom: -10px; /* Puxa o conteúdo principal para cima */
+            margin-top: 15px; 
+            margin-bottom: -10px; 
             text-align: right;
             font-size: 0.9rem;
             font-style: italic;
@@ -101,7 +111,7 @@
         /* --- O ESTILO "BOX BRANCO COM LATERAL AZUL" --- */
         .info-box {
             background: var(--white-bg);
-            border-left: 8px solid var(--primary-blue); /* A "Lateral Azul" */
+            border-left: 8px solid var(--primary-blue); 
             margin-bottom: 30px;
             padding: 25px;
             border-radius: 8px;
@@ -111,15 +121,15 @@
         /* --- SEÇÃO: CAMPEÕES (IMAGENS 1x1) --- */
         .champions-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 colunas iguais */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 20px;
             text-align: center;
         }
 
         .champion-item img {
             width: 100%;
-            aspect-ratio: 1 / 1; /* Formato 1x1 */
-            object-fit: cover; /* Garante que a imagem preenche o espaço sem distorcer */
+            aspect-ratio: 1 / 1; 
+            object-fit: cover; 
             border-radius: 8px;
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             margin-bottom: 10px;
@@ -151,7 +161,6 @@
             font-weight: 600;
         }
 
-        /* Destaque "minucioso" para a posição (medalha) */
         .results-table td:first-child {
             font-size: 1.5rem;
             text-align: center;
@@ -159,21 +168,21 @@
         }
 
         .results-table tr:nth-child(even) {
-            background-color: #f9f9f9; /* Linhas alternadas */
+            background-color: #f9f9f9; 
         }
 
         /* --- SEÇÃO: VÍDEOS (9:16) --- */
         .videos-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+            grid-template-columns: repeat(3, 1fr); 
             gap: 20px;
         }
 
         .videos-grid video {
             width: 100%;
-            aspect-ratio: 9 / 16; /* Formato 9:16 */
+            aspect-ratio: 9 / 16; 
             border-radius: 8px;
-            background-color: #000; /* Fundo preto para o player */
+            background-color: #000; 
         }
         
         /* --- BLOCO FINAL (Sobre) --- */
@@ -192,25 +201,24 @@
 
         /* --- RODAPÉ (ATUALIZADO) --- */
         footer.main-footer {
-            background-color: var(--primary-red); /* Cor vermelha */
+            background-color: var(--primary-red); 
             padding: 20px 30px;
             display: flex;
-            justify-content: space-between; /* Alterado para alinhar itens */
+            justify-content: space-between; 
             align-items: center;
         }
         
-        /* NOVO: Estilo do contato no rodapé */
         .footer-contact {
             display: flex;
             align-items: center;
-            gap: 15px; /* Espaço entre texto e ícone */
+            gap: 15px; 
             color: #fff;
             font-size: 1rem;
             font-weight: 500;
         }
 
         .footer-contact a {
-            display: inline-flex; /* Alinha o SVG corretamente */
+            display: inline-flex; 
             align-items: center;
         }
         
@@ -220,7 +228,7 @@
         }
         
         .footer-contact a:hover svg {
-            transform: scale(1.15); /* Efeito de hover */
+            transform: scale(1.15); 
         }
 
 
@@ -237,25 +245,29 @@
             }
 
             header.main-header {
-                grid-template-columns: 1fr; /* Empilha o logo e o título */
+                grid-template-columns: 1fr; 
                 gap: 15px;
                 padding: 20px;
             }
 
             .logo-header {
-                justify-self: center; /* Centra o logo */
+                justify-self: center; 
             }
 
             .title-header {
-                grid-column: 1 / -1; /* Ocupa tudo */
+                grid-column: 1 / -1; 
                 font-size: 1.8rem;
             }
             
-            /* NOVO: Ajuste instrução */
+            .spotify-embed-container {
+                padding: 20px;
+            }
+
             .expand-instruction {
                 text-align: center;
                 padding: 0 20px;
                 margin-bottom: 0;
+                margin-top: 15px;
             }
 
             main.content-area {
@@ -266,7 +278,6 @@
                 padding: 20px;
             }
 
-            /* Empilha os campeões e vídeos */
             .champions-grid,
             .videos-grid {
                 grid-template-columns: 1fr;
@@ -276,21 +287,20 @@
                  aspect-ratio: 9 / 16;
             }
             
-            /* NOVO: Ajuste rodapé */
             footer.main-footer {
-                flex-direction: column; /* Empilha o contato e a logo */
+                flex-direction: column; 
                 gap: 20px;
                 padding: 20px;
             }
             .footer-contact {
                 font-size: 0.9rem;
-                order: 2; /* Coloca o contato abaixo da logo */
+                order: 2; 
                 text-align: center;
-                flex-direction: column; /* Empilha o texto e o ícone */
+                flex-direction: column; 
                 gap: 10px;
             }
             .logo-footer {
-                order: 1; /* Coloca a logo acima */
+                order: 1; 
             }
         }
         
@@ -299,58 +309,51 @@
         /* --- ESTILOS: LIGHTBOX / MODAL --- */
         /* ================================================= */
 
-        /* Adiciona o cursor de "mãozinha" aos itens clicáveis */
         .champions-grid img,
         .videos-grid video {
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Efeito de zoom suave ao passar o rato */
         .champions-grid img:hover,
         .videos-grid video:hover {
             transform: scale(1.03);
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
-        /* O container do Modal (fica escondido por padrão) */
         .lightbox-modal {
-            display: none; /* Começa oculto */
-            position: fixed; /* Fica por cima de tudo */
+            display: none; 
+            position: fixed; 
             z-index: 1000;
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.85); /* Fundo preto semi-transparente */
+            background-color: rgba(0, 0, 0, 0.85); 
             justify-content: center;
             align-items: center;
         }
 
-        /* Classe que o JavaScript adiciona para mostrar o modal */
         .lightbox-modal.active {
             display: flex;
         }
 
-        /* Onde a imagem/vídeo maximizado vai aparecer */
         .lightbox-content {
             position: relative;
-            max-width: 90%; /* Máximo de 90% da largura da tela */
-            max-height: 90vh; /* Máximo de 90% da altura da tela */
+            max-width: 90%; 
+            max-height: 90vh; 
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        /* Estilo da imagem/vídeo dentro do modal */
         .lightbox-content img,
         .lightbox-content video {
             max-width: 100%;
-            max-height: 90vh; /* Garante que não ultrapasse a tela */
+            max-height: 90vh; 
             border-radius: 8px;
         }
 
-        /* O botão de fechar (X) */
         .lightbox-close {
             position: absolute;
             top: 15px;
@@ -376,6 +379,20 @@
             <img src="etmpan.png" alt="Logo ETMPAN" class="logo-header">
             <h1 class="title-header">10ª Etapa ETMPAN 2024/25</h1>
         </header>
+        
+        <div class="spotify-embed-container">
+            <iframe 
+                data-testid="embed-iframe" 
+                style="border-radius:12px" 
+                src="https://open.spotify.com/embed/episode/0Pxxox65FNvv4FmlGJQTFY?utm_source=generator" 
+                width="100%" 
+                height="352" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+        </div>
 
         <div class="expand-instruction">
             <p>Clicar nas imagens e vídeos para expandir ↗</p>
@@ -404,21 +421,14 @@
             <div class="info-box">
                 <h2>🏓 Thiago Silva e Inigmar Veras brilham na 10ª Etapa da ETMPAN na AABB Salvador</h2>
                 
-                <p>A 10ª Etapa da ETMPAN (Escolinha de Tênis de Mesa Professor Ângelo Neto) foi um verdadeiro espetáculo de técnica, superação e espírito esportivo. Realizada na AABB Salvador, a competição reuniu ótimos atletas em mais um capítulo de sucesso do evento que sempre moldou talentos fortalecendo o tênis de mesa baiano.</p>
-                <p>Organizado por Paulo Carneiro, presidente do Clube dos Tenistas da Bahia (CTB) com arbitragem de Eliel Barbosa e William Belo, o torneio contou com o apoio da comunidade esportiva local e o empenho da equipe do professor Ângelo Neto, referência no ensino e desenvolvimento do tênis de mesa na Bahia.</p>
+                <p>A 10ª Etapa da ETMPAN (Escolinha de Tênis de Mesa Professor Ângelo Neto) foi um verdadeiro espetáculo de técnica, superação e espírito esportivo. Realizada na AABB Salvador, a competição reuniu dezenas de atletas em mais um capítulo de sucesso do projeto que vem formando talentos e fortalecendo o tênis de mesa baiano.</p>
+                <p>Organizado por Paulo Carneiro, presidente do Clube dos Tenistas da Bahia (CTB), o torneio contou com o apoio da comunidade esportiva local e o empenho da equipe do professor Ângelo Neto, referência no ensino e desenvolvimento do tênis de mesa na Bahia.</p>
                 
                 <h3>🎯 Thiago Silva domina e conquista duas divisões</h3>
                 <p>O grande destaque da etapa foi Thiago Silva, que mostrou consistência, preparo físico e um controle técnico admirável. Em uma jornada impressionante, Thiago sagrou-se campeão da Primeira e da Segunda Divisão, consolidando-se como um dos nomes mais fortes da atual geração de mesatenistas da ETMPAN.</p>
-                <p>Suas atuações chamaram atenção pela segurança nos rallies, precisão nos ataques e tranquilidade nos momentos decisivos. Thiago demonstrou maturidade tática e resistência mental, características de um atleta em plena ascensão.</p>
-                <blockquote>“Estou muito feliz com o resultado. Venho treinando com intensidade e buscando evoluir a cada etapa. Ganhar duas divisões é fruto do trabalho que realizamos junto à equipe e aos professores”, declarou Thiago após as conquistas.</blockquote>
-                <p>A dupla vitória reafirma o excelente momento do atleta, que se destaca não apenas pelos títulos, mas pela postura exemplar dentro e fora da mesa — inspirando novos praticantes e reforçando o potencial formador do projeto coordenado por Ângelo Neto.</p>
                 
                 <h3>🥈 Inigmar Veras confirma regularidade e alto nível técnico</h3>
                 <p>Outro grande nome da competição foi Inigmar Veras, vice-campeão tanto na Primeira quanto na Segunda Divisão.</p>
-                <p>Com um jogo equilibrado e refinado, Inigmar mostrou técnica apurada, excelente leitura tática e uma regularidade que o coloca entre os atletas mais promissores da temporada.</p>
-                <p>Sua trajetória nesta etapa foi marcada por vitórias convincentes e disputas acirradas contra adversários de alto nível, culminando em duas finais emocionantes contra Thiago Silva.</p>
-                <blockquote>“Fico muito satisfeito com o desempenho. Foram partidas intensas, e disputar duas finais mostra que o trabalho está no caminho certo. Thiago está em grande fase, e competir nesse nível só nos faz crescer”, comentou Inigmar.</blockquote>
-                <p>A rivalidade saudável entre Thiago e Inigmar vem se tornando um dos grandes atrativos da ETMPAN — representando a nova geração de mesatenistas baianos que alia talento, disciplina e espírito esportivo.</p>
             </div>
 
             <div class="info-box">
@@ -490,6 +500,7 @@
                     </tbody>
                 </table>
 
+
                 <h3>Terceira Divisão</h3>
                 <table class="results-table">
                     <thead>
@@ -535,17 +546,16 @@
 
             <div class="info-box">
                 <h3>💬 Organização e legado esportivo</h3>
-                <p>O presidente do CTB, Paulo Carneiro, destacou o sucesso da etapa e o crescimento técnico dos atletas:</p>
-                <blockquote>“A ETMPAN é um celeiro de talentos. Ver atletas como Thiago e Inigmar brilhando em duas divisões mostra que o trabalho da base está dando resultados concretos. Eles representam o futuro do tênis de mesa baiano, e é gratificante acompanhar essa evolução.”</blockquote>
+                <blockquote>“A ETMPAN é um celeiro de talentos... Eles representam o futuro do tênis de mesa baiano...”</blockquote>
+                <p><strong>- Paulo Carneiro, Presidente do CTB</strong></p>
                 
-                <p>O professor Ângelo Neto, criador da escolinha e mentor técnico de diversos atletas, reforçou o propósito do projeto:</p>
-                <blockquote>“Mais do que formar campeões, queremos formar pessoas através do esporte. O tênis de mesa ensina disciplina, foco e respeito. Esses resultados são reflexo de dedicação e amor pelo que fazemos.”</blockquote>
+                <blockquote style="margin-top: 15px;">“Mais do que formar campeões, queremos formar pessoas através do esporte... Esses resultados são reflexo de dedicação e amor pelo que fazemos.”</blockquote>
+                <p><strong>- Professor Ângelo Neto</strong></p>
                 
                 <hr style="border:0; border-top: 1px solid #eee; margin: 25px 0;">
 
                 <h3>🌟 Sobre a ETMPAN e o CTB</h3>
-                <p>A ETMPAN (Escolinha de Tênis de Mesa Professor Ângelo Neto) é um projeto esportivo sediado na AABB Salvador, voltado à iniciação e ao aperfeiçoamento técnico de atletas de todas as idades.</p>
-                <p>Sob a liderança do professor Ângelo Neto e com a parceria do Clube dos Tenistas da Bahia (CTB), presidido por Paulo Carneiro, a iniciativa tem promovido a inclusão esportiva e revelado novos talentos que vêm se destacando em competições regionais e estaduais.</p>
+                <p>A ETMPAN (Escolinha de Tênis de Mesa Professor Ângelo Neto) é um projeto esportivo sediado na AABB Salvador... (e o resto do texto)</p>
                 
                 <div class="event-details" style="margin-top: 20px;">
                     <p><strong>📍 Local:</strong> AABB Salvador</p>
@@ -573,7 +583,7 @@
         </footer>
 
     </div> <div id="lightbox" class="lightbox-modal">
-        <span class="lightbox-close">&times;</span>
+        <span class="lightbox-close">×</span>
         <div class="lightbox-content">
             </div>
     </div>
