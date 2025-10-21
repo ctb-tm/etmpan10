@@ -50,7 +50,7 @@
         }
 
         .logo-header {
-            max-height: 100px; 
+            max-height: 60px; 
             width: auto;
             justify-self: start; 
         }
@@ -422,7 +422,7 @@
                 <h2>🏓 Thiago Silva e Inigmar Veras brilham na 10ª Etapa da ETMPAN na AABB Salvador</h2>
                 
                 <p>A 10ª Etapa da ETMPAN (Escolinha de Tênis de Mesa Professor Ângelo Neto) foi um verdadeiro espetáculo de técnica, superação e espírito esportivo. Realizada na AABB Salvador, a competição reuniu dezenas de atletas em mais um capítulo de sucesso do projeto que vem formando talentos e fortalecendo o tênis de mesa baiano.</p>
-                <p>Organizado por Paulo Carneiro, presidente do Clube dos Tenistas da Bahia (CTB)arbitragem de Eliel Barbosa e William Belo e coordenação de Ângelo Neto, o torneio contou com o apoio da comunidade do Tênis de Mesa e o empenho da equipe do professor Ângelo Neto, referência no ensino e desenvolvimento do tênis de mesa na Bahia.</p>
+                <p>Organizado por Paulo Carneiro, presidente do Clube dos Tenistas da Bahia (CTB), o torneio contou com o apoio da comunidade esportiva local e o empenho da equipe do professor Ângelo Neto, referência no ensino e desenvolvimento do tênis de mesa na Bahia.</p>
                 
                 <h3>🎯 Thiago Silva domina e conquista duas divisões</h3>
                 <p>O grande destaque da etapa foi Thiago Silva, que mostrou consistência, preparo físico e um controle técnico admirável. Em uma jornada impressionante, Thiago sagrou-se campeão da Primeira e da Segunda Divisão, consolidando-se como um dos nomes mais fortes da atual geração de mesatenistas da ETMPAN.</p>
@@ -545,16 +545,16 @@
             <div class="info-box">
                 <h2>🎥 Destaques da Etapa</h2>
                 <div class="videos-grid">
-                    <video src="1.mp4" poster=""></video>
-                    <video src="2.mp4" poster=""></video>
-                    <video src="3.mp4" poster=""></video>
+                    <video src="1.mp4"></video>
+                    <video src="2.mp4"></video>
+                    <video src="3.mp4"></video>
                 </div>
             </div>
 
             <div class="info-box">
                 <h3>💬 Organização e legado esportivo</h3>
                 <p>O presidente do CTB, Paulo Carneiro, destacou o sucesso da etapa e o crescimento técnico dos atletas:</p>
-                <blockquote>“A ETMPAN é um celeiro de talentos. Ver atletas como Thiago, Inigmar e Matheus brilhando em suas divisões mostra que o trabalho da organização gera resultados concretos. Eles representam o tênis de mesa baiano, e é gratificante acompanhar essa evolução.”</blockquote>
+                <blockquote>“A ETMPAN é um celeiro de talentos. Ver atletas como Thiago e Inigmar brilhando em duas divisões mostra que o trabalho da base está dando resultados concretos. Eles representam o futuro do tênis de mesa baiano, e é gratificante acompanhar essa evolução.”</blockquote>
                 
                 <p>O professor Ângelo Neto, criador da escolinha e mentor técnico de diversos atletas, reforçou o propósito do projeto:</p>
                 <blockquote>“Mais do que formar campeões, queremos formar pessoas através do esporte. O tênis de mesa ensina disciplina, foco e respeito. Esses resultados são reflexo de dedicação e amor pelo que fazemos.”</blockquote>
@@ -591,3 +591,74 @@
 
             <img src="etmpanvm.png" alt="Logo ETMPAN Vermelha" class="logo-footer">
         </footer>
+
+    </div> <div id="lightbox" class="lightbox-modal">
+        <span class="lightbox-close">×</span>
+        <div class="lightbox-content">
+            </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            
+            // 1. Selecionar os elementos principais do modal
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = lightbox.querySelector('.lightbox-content');
+            const closeButton = lightbox.querySelector('.lightbox-close');
+
+            // 2. Selecionar TODAS as imagens e vídeos que devem abrir o modal
+            const clickableImages = document.querySelectorAll('.champions-grid img');
+            const clickableVideos = document.querySelectorAll('.videos-grid video');
+
+            // 3. Adicionar o "ouvidor de clique" para as IMAGENS
+            clickableImages.forEach(img => {
+                img.addEventListener('click', function() {
+                    lightboxContent.innerHTML = ''; 
+                    const newImg = document.createElement('img');
+                    newImg.src = this.src; 
+                    newImg.alt = this.alt;
+                    lightboxContent.appendChild(newImg);
+                    lightbox.classList.add('active'); // Mostra o modal
+                });
+            });
+
+            // 4. Adicionar o "ouvidor de clique" para os VÍDEOS
+            clickableVideos.forEach(video => {
+                video.addEventListener('click', function() {
+                    
+                    // video.pause(); // <-- ESTA LINHA ERA O PROBLEMA E FOI REMOVIDA.
+
+                    lightboxContent.innerHTML = ''; 
+                    const newVideo = document.createElement('video');
+                    newVideo.src = this.src; 
+                    newVideo.controls = true; 
+                    newVideo.autoplay = true; 
+                    newVideo.loop = true;     
+                    
+                    lightboxContent.appendChild(newVideo);
+                    
+                    lightbox.classList.add('active'); // Mostra o modal
+                });
+            });
+
+            // 5. Função para FECHAR o modal
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                // Limpa o conteúdo (isto para o vídeo que está a tocar)
+                lightboxContent.innerHTML = ''; 
+            }
+
+            // 6. Adicionar eventos de fecho
+            closeButton.addEventListener('click', closeLightbox);
+            
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === lightbox) { 
+                    closeLightbox();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
